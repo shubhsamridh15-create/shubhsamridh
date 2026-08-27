@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raksha Bandhan • Part 2 | How Well Do You Know Brother?</title>
+
+  <link rel="stylesheet" href="part2.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- =========================
+       PREMIUM BACKGROUND
+       ========================= -->
+  <div id="bg-visuals" aria-hidden="true">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-aurora aurora-1"></div>
+    <div class="bg-aurora aurora-2"></div>
+    <div class="bg-ring ring-1"></div>
+    <div class="bg-ring ring-2"></div>
+    <div class="bg-ring ring-3"></div>
+    <div class="light-beam beam-1"></div>
+    <div class="light-beam beam-2"></div>
+    <canvas id="bg-particles" class="bg-canvas" width="800" height="600"></canvas>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- =========================
+       MAIN APP
+       ========================= -->
+  <div class="app-container">
+
+    <section id="intro-screen" class="screen active">
+      <div class="glass-card intro-card">
+        <span class="badge">HAPPY RAKSHA SIBLING TAX DAY</span>
+        <h1 class="main-title">Time for a reality check.</h1>
+        <p class="subtitle">"I bet you both you can't ans all correct😤.”</p>
+        <button id="btn-start" class="btn btn-primary glow-btn">
+          CONTINUE <span class="arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="screen">
+      <div class="quiz-nav">
+        <button id="btn-back" class="btn-text">← Back</button>
+        <div class="progress-container">
+          <div class="progress-text">
+            <span id="category-tag" class="category-tag">CATEGORY</span>
+            <span id="progress-count">QUESTION 1 / 5</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card quiz-card" id="quiz-card">
+        <div class="question-decoration"></div>
+        <h2 id="question-text" class="question-text">Loading Question...</h2>
+        <div id="options-container" class="options-grid"></div>
+        <div class="feedback-container" id="feedback-container" aria-live="polite">
+          <p id="feedback-message" class="feedback-message"></p>
+        </div>
+        <div class="quiz-controls">
+          <button id="btn-reveal" class="btn btn-accent" disabled>Reveal Answer ✨</button>
+          <button id="btn-next" class="btn btn-primary hidden">NEXT QUESTION <span class="arrow">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-screen" class="screen">
+      <div class="glass-card result-card">
+        <div class="trophy-icon">🏆</div>
+        <h2 class="result-title">CHALLENGE COMPLETE</h2>
+        <div class="score-display">
+          <span id="final-score">0</span>
+          <span class="score-total">/ 5</span>
+        </div>
+        <p id="result-message" class="result-message">Your custom message here!</p>
+        <div class="result-actions">
+          <button id="btn-restart" class="btn btn-secondary">PLAY AGAIN</button>
+          <button id="btn-part3" class="btn btn-primary glow-btn">CONTINUE TO PART 3 <span class="arrow">→</span></button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="audio/song2.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="part2.js"></script>
+
+</body>
+</html>

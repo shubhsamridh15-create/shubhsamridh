@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: #0f0c1b;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#spaceCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- ENVELOPE STYLES (Enlarged to cover approx 40%+ screen area) --- */
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 2;
+}
+
+.envelope-container.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    position: absolute;
+}
+
+.envelope {
+    width: min(520px, 85vw);
+    height: min(360px, 55vh);
+    background: #231f3d;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: min(260px, 42.5vw) solid transparent;
+    border-right: min(260px, 42.5vw) solid transparent;
+    border-top: min(190px, 30vh) solid #2d2650;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+.envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: min(260px, 42.5vw) solid #231f3d;
+    border-right: min(260px, 42.5vw) solid #231f3d;
+    border-bottom: min(210px, 32vh) solid #1c1830;
+    border-radius: 0 0 16px 16px;
+}
+
+.wax-seal {
+    position: absolute;
+    top: min(160px, 24vh);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #f43f5e, #be123c);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(244, 63, 94, 0.5);
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.wax-seal:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.wax-seal span {
+    font-size: 30px;
+}
+
+.click-hint {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* --- FALLING ALPHABETS ANIMATION LAYER --- */
+.falling-letters-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.falling-alphabet {
+    position: absolute;
+    top: -50px;
+    color: #f472b6;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 24px;
+    user-select: none;
+    animation: fallDown linear forwards;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* --- LETTER STYLES --- */
+.letter-container {
+    position: absolute;
+    width: min(650px, 92%);
+    max-height: 90vh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    z-index: 20;
+}
+
+.letter-container.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.letter-paper {
+    background: #18152c;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 45px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.letter-salutation {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    color: #fcd34d;
+    margin-bottom: 20px;
+}
+
+.letter-body {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+.letter-body p {
+    margin-bottom: 16px;
+}
+
+.letter-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
+}
+
+.close-letter-btn {
+    background: linear-gradient(135deg, #7b61ff, #ff4d9d);
+    border: none;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(123, 97, 255, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.close-letter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(255, 77, 157, 0.4);
+}
+
+@media (max-width: 600px) {
+    .letter-paper {
+        padding: 24px;
+    }
+}

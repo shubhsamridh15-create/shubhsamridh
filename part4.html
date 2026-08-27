@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Memories</title>
+
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="part4.css">
+    <link rel="stylesheet" href="transitions.css">
+</head>
+
+<body>
+
+    <!-- Animated background -->
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+
+        <div class="stars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <!-- OPENING -->
+    <section id="opening" class="page active">
+
+        <div class="content">
+
+            <div class="small-title">A LITTLE MEMORY GAME</div>
+
+            <h1>HOW WELL DO YOU<br>REMEMBER? 👀</h1>
+
+            <p>
+                Let's see how well you remember<br>
+                the little moments...
+            </p>
+
+            <button onclick="startGame()">
+                LET'S BEGIN →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUESTION PAGE -->
+    <section id="questionPage" class="page hidden">
+
+        <!-- Added 'glass-box' class here -->
+        <div class="content glass-box">
+
+            <div id="questionNumber">
+                QUESTION 1 / 10
+            </div>
+
+            <h2 id="question"></h2>
+
+            <button id="revealButton" onclick="revealAnswer()">
+                REVEAL ANSWER
+            </button>
+
+            <div id="answerArea" class="hidden">
+
+                <div class="answer-label">
+                    THE ANSWER IS...
+                </div>
+
+                <div id="answer"></div>
+
+                <button onclick="nextQuestion()" id="nextButton">
+                    NEXT QUESTION →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section id="finalPage" class="page hidden">
+
+        <div class="content">
+
+            <div class="small-title">MEMORIES</div>
+
+            <h1>YOU MADE IT! ❤️</h1>
+
+            <p>
+                Ten little questions,<br>
+                but countless memories.
+            </p>
+
+            <a href="part5.html">
+                CONTINUE THE JOURNEY →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <script src="part4.js"></script>
+
+</body>
+</html>

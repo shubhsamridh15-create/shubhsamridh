@@ -1,0 +1,1565 @@
+/* =========================================================
+   PART 3 — OUR LITTLE MEMORIES
+   COMPLETE NEW DESIGN
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "DM Sans", sans-serif;
+
+    color: #fff;
+
+    background:
+        #08060d;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+button {
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -10;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255, 65, 160, .14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(115, 85, 255, .13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255, 175, 80, .08),
+            transparent 35%
+        ),
+        #08060d;
+}
+
+
+/* =========================================================
+   AURORA
+========================================================= */
+
+.aurora {
+    position: absolute;
+
+    width: 55vw;
+    height: 55vw;
+
+    max-width: 750px;
+    max-height: 750px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .45;
+
+    animation:
+        auroraFloat
+        18s ease-in-out
+        infinite alternate;
+}
+
+.aurora-1 {
+    top: -20%;
+    left: -15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 40, 150, .38),
+            transparent 68%
+        );
+}
+
+.aurora-2 {
+    top: 25%;
+    right: -20%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100, 80, 255, .32),
+            transparent 68%
+        );
+
+    animation-delay: -6s;
+}
+
+.aurora-3 {
+    left: 30%;
+    bottom: -35%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 170, 80, .20),
+            transparent 68%
+        );
+
+    animation-delay: -11s;
+}
+
+
+@keyframes auroraFloat {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(70px, -50px, 0)
+            scale(1.12);
+    }
+
+    100% {
+        transform:
+            translate3d(-50px, 60px, 0)
+            scale(.95);
+    }
+}
+
+
+/* =========================================================
+   LIGHT BEAMS
+========================================================= */
+
+.light-beam {
+    position: absolute;
+
+    width: 25vw;
+    height: 130%;
+
+    top: -15%;
+
+    opacity: .08;
+
+    filter: blur(25px);
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 150, 210, .9),
+            transparent
+        );
+
+    animation:
+        beamMove
+        15s ease-in-out
+        infinite alternate;
+}
+
+.beam-1 {
+    left: 12%;
+}
+
+.beam-2 {
+    right: 8%;
+
+    transform:
+        rotate(-25deg);
+
+    animation-delay: -7s;
+}
+
+
+@keyframes beamMove {
+
+    from {
+        transform:
+            translateX(-80px)
+            rotate(25deg);
+    }
+
+    to {
+        transform:
+            translateX(100px)
+            rotate(25deg);
+    }
+}
+
+
+/* =========================================================
+   STAR / PARTICLE FIELD
+========================================================= */
+
+.star-field {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.8);
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.65);
+
+    opacity: var(--opacity);
+
+    animation:
+        starFloat
+        var(--duration)
+        ease-in-out
+        infinite alternate;
+
+    animation-delay: var(--delay);
+}
+
+
+@keyframes starFloat {
+
+    from {
+        transform:
+            translate3d(
+                0,
+                20px,
+                0
+            );
+
+        opacity:
+            calc(var(--opacity) * .35);
+    }
+
+    to {
+        transform:
+            translate3d(
+                15px,
+                -35px,
+                0
+            );
+
+        opacity:
+            var(--opacity);
+    }
+}
+
+
+/* =========================================================
+   BACKGROUND NOISE
+========================================================= */
+
+.background-noise {
+    position: absolute;
+    inset: 0;
+
+    opacity: .035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+
+    mix-blend-mode: overlay;
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.scroll-progress {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    z-index: 9999;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+#scroll-progress-bar {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5ca8,
+            #ffb86b,
+            #a77bff
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(255,100,180,.85);
+
+    transition:
+        width .08s linear;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section {
+    min-height: 100svh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        70px 24px;
+
+    text-align: center;
+}
+
+
+.hero-glass {
+    position: relative;
+
+    width: min(920px, 100%);
+
+    padding:
+        70px 50px 60px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.38),
+
+        inset 0 1px 0
+        rgba(255,255,255,.12);
+
+    animation:
+        heroEntrance
+        1.2s cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+
+.hero-glass::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            transparent 35%,
+            transparent 65%,
+            rgba(255,150,210,.04)
+        );
+}
+
+
+@keyframes heroEntrance {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(.96);
+
+        filter:
+            blur(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+.hero-number {
+    position: absolute;
+
+    top: 24px;
+    left: 30px;
+
+    font-size: .65rem;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.35);
+}
+
+
+.hero-line {
+    position: absolute;
+
+    top: 31px;
+    right: 30px;
+
+    width: 80px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.4)
+        );
+}
+
+
+.hero-badge {
+    display: inline-flex;
+
+    padding:
+        9px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: .68rem;
+
+    letter-spacing: 3px;
+}
+
+
+.hero-title {
+    margin-top: 28px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            3.5rem,
+            9vw,
+            7.5rem
+        );
+
+    line-height: .92;
+
+    font-weight: 600;
+
+    letter-spacing: -3px;
+
+    color: #fff;
+}
+
+
+.hero-title span {
+    display: block;
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #ff9bc9 38%,
+            #ffd38c 68%,
+            #fff
+        );
+
+    background-size: 250%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        titleShimmer
+        8s ease-in-out
+        infinite;
+}
+
+
+@keyframes titleShimmer {
+
+    0% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
+}
+
+
+.hero-subtitle {
+    max-width: 550px;
+
+    margin:
+        30px auto 0;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size:
+        clamp(.9rem, 2vw, 1.05rem);
+
+    line-height: 1.8;
+}
+
+
+.hero-bottom {
+    margin-top: 70px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: .62rem;
+
+    letter-spacing: 3px;
+}
+
+
+.scroll-icon {
+    width: 23px;
+    height: 36px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    border-radius: 20px;
+
+    position: relative;
+}
+
+
+.scroll-icon span {
+    position: absolute;
+
+    top: 7px;
+    left: 50%;
+
+    width: 3px;
+    height: 7px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(255,255,255,.75);
+
+    transform:
+        translateX(-50%);
+
+    animation:
+        scrollDot
+        1.8s ease-in-out
+        infinite;
+}
+
+
+@keyframes scrollDot {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, 0);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, 14px);
+    }
+}
+
+
+/* =========================================================
+   GALLERY SECTION
+========================================================= */
+
+.gallery-section {
+    width: 100%;
+
+    padding:
+        130px 0 0;
+}
+
+
+.gallery-heading {
+    width: min(1100px, calc(100% - 40px));
+
+    margin:
+        0 auto 80px;
+
+    text-align: center;
+}
+
+
+.section-label {
+    display: inline-block;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: .65rem;
+
+    letter-spacing: 4px;
+}
+
+
+.gallery-heading h2 {
+    margin-top: 18px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            4.8rem
+        );
+
+    line-height: 1;
+
+    font-weight: 500;
+}
+
+
+.gallery-heading h2 span {
+    color:
+        rgba(255,255,255,.35);
+}
+
+
+/* =========================================================
+   ⭐ MASONRY GALLERY
+========================================================= */
+
+.gallery-grid {
+
+    /*
+        THIS IS THE IMPORTANT PART.
+
+        CSS columns automatically place
+        each image underneath the previous
+        image and do NOT create the huge
+        blank spaces caused by the old
+        JavaScript column balancing.
+    */
+
+    width: 100%;
+
+    column-count: 3;
+
+    column-gap: 0;
+
+    /*
+        Prevents the browser from splitting
+        an individual photo.
+    */
+}
+
+
+.photo-item {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    break-inside: avoid;
+
+    -webkit-column-break-inside: avoid;
+
+    overflow: hidden;
+
+    line-height: 0;
+
+    background:
+        #100b14;
+
+    /*
+        Small separator.
+        No actual gap.
+    */
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    /*
+        Entrance animation starts hidden.
+    */
+
+    opacity: 0;
+
+    transform:
+        translateY(45px)
+        scale(.97);
+
+    filter:
+        blur(5px);
+
+    transition:
+        opacity .8s cubic-bezier(.2,.8,.2,1),
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        filter .8s ease;
+}
+
+
+.photo-item.photo-visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   PHOTO IMAGE
+========================================================= */
+
+.photo-item img {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    /*
+        VERY IMPORTANT:
+        Never force a height.
+        Never use aspect-ratio.
+        Never crop.
+
+        The original image dimensions
+        determine the height.
+    */
+
+    height: auto;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    margin: 0;
+    padding: 0;
+
+    z-index: 2;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.8,.2,1),
+        filter .8s ease;
+}
+
+
+/* =========================================================
+   IMAGE GLOW
+========================================================= */
+
+.photo-item::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            transparent 25%,
+            transparent 70%,
+            rgba(255,100,190,.10)
+        );
+
+    opacity: .45;
+
+    transition:
+        opacity .6s ease;
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+========================================================= */
+
+.photo-item:hover {
+    z-index: 10;
+
+    border-color:
+        rgba(255,255,255,.22);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.35);
+}
+
+
+.photo-item:hover img {
+    transform:
+        scale(1.035);
+
+    filter:
+        brightness(1.05)
+        saturate(1.08);
+}
+
+
+.photo-item:hover::before {
+    opacity: .8;
+}
+
+
+/* =========================================================
+   FINAL SECTION
+========================================================= */
+
+.final-section {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        120px 25px;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+.final-orb {
+    position: absolute;
+
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,80,165,.20),
+            rgba(150,80,255,.08) 40%,
+            transparent 70%
+        );
+
+    filter:
+        blur(35px);
+
+    animation:
+        finalPulse
+        8s ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes finalPulse {
+
+    from {
+        transform:
+            scale(.85);
+
+        opacity: .65;
+    }
+
+    to {
+        transform:
+            scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   FINAL DECORATIVE RINGS
+========================================================= */
+
+.final-ring {
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
+
+    border-radius: 50%;
+
+    animation:
+        ringFloat
+        12s ease-in-out
+        infinite alternate;
+}
+
+
+.ring-one {
+    width: 500px;
+    height: 500px;
+}
+
+
+.ring-two {
+    width: 800px;
+    height: 800px;
+
+    animation-delay: -5s;
+}
+
+
+@keyframes ringFloat {
+
+    from {
+        transform:
+            scale(.9)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            scale(1.1)
+            rotate(20deg);
+    }
+}
+
+
+/* =========================================================
+   FINAL CONTENT
+========================================================= */
+
+.final-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(850px, 100%);
+
+    padding:
+        70px 45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.4),
+
+        inset 0 1px 0
+        rgba(255,255,255,.1);
+}
+
+
+.final-label {
+    font-size: .65rem;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.4);
+}
+
+
+.final-divider {
+    width: 60px;
+    height: 1px;
+
+    margin:
+        22px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,160,210,.8),
+            transparent
+        );
+}
+
+
+.final-message {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            6vw,
+            5.5rem
+        );
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+}
+
+
+.final-message span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff9ac8,
+            #ffd18b,
+            #bda0ff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    background-size: 200%;
+
+    animation:
+        finalText
+        7s ease-in-out
+        infinite;
+}
+
+
+@keyframes finalText {
+
+    0%,
+    100% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+}
+
+
+.final-subtitle {
+    margin-top: 25px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size:
+        .95rem;
+}
+
+
+/* =========================================================
+   CONTINUE BUTTON
+========================================================= */
+
+.continue-btn {
+    position: relative;
+
+    margin-top: 45px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding:
+        15px 22px 15px 26px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,75,155,.9),
+            rgba(145,85,255,.9)
+        );
+
+    color: white;
+
+    font-size: .75rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 50px
+        rgba(220,70,170,.22);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.continue-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .6s ease;
+}
+
+
+.continue-btn:hover::before {
+    left: 130%;
+}
+
+
+.continue-btn:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 22px 60px
+        rgba(220,70,170,.35);
+}
+
+
+.continue-btn:active {
+    transform:
+        scale(.96);
+}
+
+
+.button-arrow {
+    font-size: 1.35rem;
+
+    transition:
+        transform .35s ease;
+}
+
+
+.continue-btn:hover
+.button-arrow {
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .gallery-grid {
+        column-count: 2;
+    }
+
+    .hero-glass {
+        padding:
+            60px 35px 50px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero-section {
+        padding:
+            30px 15px;
+    }
+
+
+    .hero-glass {
+        padding:
+            55px 22px 45px;
+
+        border-radius: 25px;
+    }
+
+
+    .hero-number {
+        left: 20px;
+        top: 20px;
+    }
+
+
+    .hero-line {
+        right: 20px;
+        top: 27px;
+
+        width: 50px;
+    }
+
+
+    .hero-badge {
+        font-size: .58rem;
+
+        letter-spacing: 2px;
+
+        padding:
+            8px 12px;
+    }
+
+
+    .hero-title {
+        margin-top: 24px;
+
+        font-size:
+            clamp(
+                3rem,
+                16vw,
+                5rem
+            );
+
+        letter-spacing:
+            -2px;
+    }
+
+
+    .hero-subtitle {
+        font-size: .88rem;
+
+        line-height: 1.7;
+
+        margin-top: 22px;
+    }
+
+
+    .hero-bottom {
+        margin-top: 55px;
+    }
+
+
+    .gallery-section {
+        padding-top: 90px;
+    }
+
+
+    .gallery-heading {
+        width:
+            calc(100% - 30px);
+
+        margin-bottom: 55px;
+    }
+
+
+    .gallery-heading h2 {
+        font-size:
+            clamp(
+                2.3rem,
+                10vw,
+                3.5rem
+            );
+    }
+
+
+    /*
+       One column on phones.
+
+       This is intentional:
+       it prevents tiny photos and
+       preserves the original image.
+    */
+
+    .gallery-grid {
+        column-count: 1;
+    }
+
+
+    .photo-item {
+        border-width: 1px;
+    }
+
+
+    .final-section {
+        padding:
+            80px 15px;
+    }
+
+
+    .final-content {
+        padding:
+            55px 22px;
+
+        border-radius: 25px;
+    }
+
+
+    .final-message {
+        font-size:
+            clamp(
+                2.3rem,
+                11vw,
+                3.5rem
+            );
+    }
+
+
+    .final-subtitle {
+        font-size: .85rem;
+    }
+
+
+    .final-ring {
+        opacity: .45;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+    }
+}
+/* =========================================================
+   Q&A SECTION (GLASSY BOXES)
+========================================================= */
+
+.qa-section {
+    width: min(850px, 100%);
+    margin: 100px auto;
+    padding: 0 25px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    
+    position: relative;
+    z-index: 5;
+}
+
+.qa-glass-box {
+    padding: 40px;
+    
+    /* The Glass Effect */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+    );
+    
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        
+    /* Subtle hover interaction */
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.qa-glass-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.qa-question {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.qa-answer {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Mobile Adjustments for Q&A */
+@media (max-width: 600px) {
+    .qa-glass-box {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+    
+    .qa-question {
+        font-size: 1.3rem;
+    }
+    
+    .qa-answer {
+        font-size: 0.9rem;
+    }
+}

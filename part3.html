@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Memories • Part 03</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+            
+    <link rel="stylesheet" href="part3.css">
+    <link rel="stylesheet" href="transitions.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="background">
+
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+
+        <div class="light-beam beam-1"></div>
+        <div class="light-beam beam-2"></div>
+
+        <div class="star-field" id="star-field"></div>
+
+        <div class="background-noise"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         SCROLL PROGRESS
+    =========================================== -->
+
+    <div class="scroll-progress">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+
+    <!-- ==========================================
+         HERO
+    =========================================== -->
+
+    <header class="hero-section">
+
+        <div class="hero-glass">
+
+            <div class="hero-number">
+                03
+            </div>
+
+            <div class="hero-line"></div>
+
+            <span class="hero-badge">
+                RAKSHA BANDHAN • OUR STORY
+            </span>
+
+            <h1 class="hero-title">
+                Our Little
+                <span>Memories</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Some moments deserve more than just a photograph.
+                They deserve to be remembered.
+            </p>
+
+            <div class="hero-bottom">
+
+                <span>
+                    SCROLL TO EXPLORE
+                </span>
+
+                <div class="scroll-icon">
+                    <span></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         GALLERY
+    =========================================== -->
+
+    <main>
+
+        <section class="gallery-section">
+
+            <div class="gallery-heading">
+
+                <span class="section-label">
+                    A COLLECTION OF MOMENTS
+                </span>
+
+                <h2>
+                    66 little pieces
+                    <span>of our story.</span>
+                </h2>
+
+            </div>
+
+
+            <!--
+                IMPORTANT:
+                JavaScript creates all 66 photos here.
+                CSS handles the masonry layout.
+            -->
+
+            <div
+                id="gallery-grid"
+                class="gallery-grid"
+            ></div>
+
+        </section>
+       
+    
+
+
+        <!-- ======================================
+             FINAL SECTION
+        ======================================= -->
+
+        <section class="final-section">
+
+            <div class="final-orb"></div>
+            <div class="final-ring ring-one"></div>
+            <div class="final-ring ring-two"></div>
+
+            <div class="final-content">
+
+                <span class="final-label">
+                    66 MEMORIES LATER
+                </span>
+
+                <div class="final-divider"></div>
+
+                <h2 class="final-message">
+                    And there are still
+                    <span>so many memories</span>
+                    to make... ❤️
+                </h2>
+
+                <p class="final-subtitle">
+                    The best moments are still waiting for us.
+                </p>
+
+                <button
+                    id="continue-btn"
+                    class="continue-btn"
+                    type="button"
+                >
+
+                    <span>
+                        CONTINUE
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="part3.js"></script>
+
+</body>
+
+</html>

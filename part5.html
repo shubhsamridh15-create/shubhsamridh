@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Official Delivery for You</title>
+
+    <link rel="stylesheet" href="part5.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Soft Ambient Gradient Canvas Background -->
+    <canvas id="spaceCanvas"></canvas>
+    
+    <!-- Falling Alphabet Container -->
+    <div class="falling-letters-container" id="fallingContainer"></div>
+
+    <main class="container">
+        
+        <!-- ENVELOPE WRAPPER (Larger size) -->
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-pocket"></div>
+                <div class="wax-seal" id="openBtn">
+                    <span>👑</span>
+                </div>
+            </div>
+            <p class="click-hint">Tap the seal to open your mail</p>
+        </div>
+
+        <!-- THE LETTER (Exact text formatted) -->
+        <div class="letter-container" id="letterContainer">
+            <div class="letter-paper">
+                <div class="letter-body">
+                    <p class="letter-salutation">Dear sisters,</p>
+                    <p>
+                        Being The Eldest Sibling is Basically Getting Promoted To Management Without Salary, Training, Or The Option To Resign.
+                    <p>
+                        You're The Unpaid Babysitter, Backup Parent, Emergency Driver, Tech support,Conflict Manager,Somehow The Default Suspect Whenever Literally Anything Goes Wrong.
+                </div>
+
+                <div class="letter-footer">
+                    <a href="index.html" class="close-letter-btn" id="resetBtn">BACK TO HOME ↺</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="part5.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+/* Fade-in effect when any page loads */
+body {
+    animation: fadeInPage 0.8s ease-in-out forwards;
+}
+
+/* Fade-out effect applied just before navigating away */
+.fade-out-page {
+    animation: fadeOutPage 0.7s ease-in-out forwards !important;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOutPage {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
